@@ -5,7 +5,7 @@ import re
 
 app = Flask(__name__)
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAfL5jiT1XqZy5_xUjEtRYOjV-eyewIx8A"
+os.environ["GOOGLE_API_KEY"] = "-eyewIx8A"
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 @app.route("/", methods=["GET", "POST"])
@@ -29,7 +29,11 @@ def index():
             if request.form.get("koreksi_nama"):
                 response_koreksi = genai.GenerativeModel('gemini-1.5-pro')
                 prompt_koreksi = response_koreksi.generate_content(f"Koreksi nama unit ini dengan nama yang benar dan singkat, anda bisa cari di internet. berikan response langsung nama nya tanpa perlu Nama unit yang benar adalah : {nama_kendaraan}")
-                nama_kendaraan_koreksi = [candidate.text for candidate in prompt_koreksi.candidates]  # Hapus spasi berlebih
+                # Menampilkan hasil (asumsi atribut teks bernama 'text')
+                if response_koreksi and hasattr(response_koreksi, 'text'):
+                    print(response_koreksi.text)
+                else:
+                    print("Tidak ada respons yang dihasilkan atau format respons tidak valid.")
 
             # Analisis harga pasar (perbaikan pada prompt)
             
@@ -42,7 +46,11 @@ def index():
                             "4. Kisaran Harga Terendah\n"
                             "5. Kisaran Harga Tertinggi\n"
                             "6. Sumber informasi (misalnya situs web, platform jual beli, dll.)")
-            result_price = [candidate.text for candidate in prompt_harga.candidates]  # Store all candidate responses
+            # Menampilkan hasil (asumsi atribut teks bernama 'text')
+            if response_harga and hasattr(response_harga, 'text'):
+                print(response_harga.text)
+            else:
+                print("Tidak ada respons yang dihasilkan atau format respons tidak valid.")
 
         except Exception as e:
             error_message = f"Terjadi kesalahan: {e}"
