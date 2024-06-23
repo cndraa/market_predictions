@@ -9,6 +9,7 @@
 
 <body>
     <div class="container mt-5">
+
         <form method="POST">
             <div class="form-row">
                 <h2>Informasi Kendaraan</h2>
@@ -23,7 +24,9 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nama_kendaraan">Nama Kendaraan</label>
-                    <input type="text" class="form-control" id="nama_kendaraan" name="nama_kendaraan">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nama_kendaraan" name="nama_kendaraan">
+                    </div>
                 </div>
             </div>
             <div class="form-row">
@@ -57,38 +60,77 @@
                     <input type="text" class="form-control" id="wilayah_kendaraan" name="wilayah_kendaraan">
                 </div>
             </div>
-
-            <div class="form-check mt-3">
-                <input class="form-check-input" type="checkbox" value="1" id="koreksi_nama" name="koreksi_nama">
-                <label class="form-check-label" for="koreksi_nama">
-                    Koreksi Nama Kendaraan (Opsional)
-                </label>
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
             <div class="form-row mt-5">
                 <h2>Price Prediction</h2>
             </div>
 
-            {% if result_price or error_message %}
-            <div class="form-row">
-                {% if result_price %}
+            <div >
+                <b><label>Predict Result: </label></b>
                 <div class="alert alert-success mt-2" role="alert">
-                    <h4 class="alert-heading">Hasil Analisis Harga:</h4>
-                    <p>{{ result_price }}</p>
+                    Nama kendaraan yang dikoreksi: {{ nama_kendaraan_koreksi }}
                 </div>
-                {% elif error_message %}
-                <div class="alert alert-danger mt-2" role="alert">
-                    <h4 class="alert-heading">Error:</h4>
-                    <p>{{ error_message }}</p>
+                <div>
+                    <label style="width: 100%;">Jenis Kendaraan: {{ jenis_kendaraan }}</label>
                 </div>
-                {% endif %}
+                <div>
+                    <label style="width: 100%;">Nama Kendaraan: {{ nama_kendaraan }}</label>
+                </div>
+                <div>
+                    <label style="width: 100%;">Tahun Kendaraan: {{ tahun_kendaraan }}</label>
+                </div>
+                <br/>
+                <!-- <div>
+                    <p style="width: 100%;">{{ predict_text | safe }}</p>
+                </div> -->
             </div>
-            {% endif %}
+            
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="km_kendaraan">KM Kendaraan</label>
+                    <input type="text" class="form-control" id="km_kendaraan" name="km_kendaraan"
+                        value="{{ km_kendaraan }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="transmisi">Transmisi</label>
+                    <input type="text" class="form-control" id="transmisi" name="transmisi" value="{{ transmisi }}"
+                        readonly>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="bajan_bakar">Bahan Bakar</label>
+                    <input type="text" class="form-control" id="bahan_bakar" name="bahan_bakar"
+                        value="{{ bahan_bakar }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="wilayah_kendaraan">Wilayah Kendaraan</label>
+                    <input type="text" class="form-control" id="wilayah_kendaraan" name="wilayah_kendaraan" value="{{ wilayah_kendaraan }}"
+                        readonly>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="bottom_filtered">Bottom Regional Market Price</label>
+                    <input type="text" class="form-control" id="bottom_filtered" name="bottom_filtered"
+                        value="{{ bottom_filtered }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="top_filtered">High Regional Market Price</label>
+                    <input type="text" class="form-control" id="top_filtered" name="top_filtered" value="{{ top_filtered }}"
+                        readonly>
+                </div>
+            </div>
 
+            
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
