@@ -31,6 +31,8 @@ def index():
     informasi_tambahan = ''
     linkArr = []
     image_kendaraan = ''
+    array_text = ['', '', '', '', '', '']
+    
     
     if request.method == "POST":
         jenis_kendaraan = request.form["jenis_kendaraan"]
