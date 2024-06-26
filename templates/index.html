@@ -66,7 +66,7 @@
                 <h2>Price Prediction</h2>
             </div>
 
-            <div >
+            <div>
                 <b><label>Predict Result: </label></b>
                 <div class="alert alert-success mt-2" role="alert">
                     Nama kendaraan yang dikoreksi: {{ nama_kendaraan_koreksi }}
@@ -80,13 +80,15 @@
                 <div>
                     <label style="width: 100%;">Tahun Kendaraan: {{ tahun_kendaraan }}</label>
                 </div>
-                <br/>
+                <br />
+                <!-- <img src="{{ image_kendaraan }}" alt="{{image_kendaraan}}" style="width: 500px; margin-bottom: 10px;"> -->
+                <br>
                 <!-- <div>
                     <p style="width: 100%;">{{ predict_text | safe }}</p>
                 </div> -->
             </div>
-            
-            
+
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="km_kendaraan">KM Kendaraan</label>
@@ -107,8 +109,8 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="wilayah_kendaraan">Wilayah Kendaraan</label>
-                    <input type="text" class="form-control" id="wilayah_kendaraan" name="wilayah_kendaraan" value="{{ wilayah_kendaraan }}"
-                        readonly>
+                    <input type="text" class="form-control" id="wilayah_kendaraan" name="wilayah_kendaraan"
+                        value="{{ wilayah_kendaraan }}" readonly>
                 </div>
             </div>
             <div class="form-row">
@@ -119,12 +121,29 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="top_filtered">High Regional Market Price</label>
-                    <input type="text" class="form-control" id="top_filtered" name="top_filtered" value="{{ top_filtered }}"
-                        readonly>
+                    <input type="text" class="form-control" id="top_filtered" name="top_filtered"
+                        value="{{ top_filtered }}" readonly>
                 </div>
             </div>
 
-            
+            <div>
+                <div>
+                    <b><label style="width: 100%;">Link Sumber Analisa Harga:</label></b>
+                    <a href='{{linkArr1}}' target="_blank">{{linkArr1}}</a><br>
+                    <a href='{{linkArr2}}' target="_blank">{{linkArr2}}</a><br>
+                </div>
+                <div>
+                    <br>
+                    <b><label style="width: 100%;">Informasi Tambahan:</label></b>
+                    <label style="width: 100%;">{{informasi_tambahan}}</label>
+                </div>
+                <br />
+                <!-- <div>
+                    <p style="width: 100%;">{{ predict_text | safe }}</p>
+                </div> -->
+            </div>
+
+
         </form>
     </div>
 
